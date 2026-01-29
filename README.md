@@ -114,7 +114,7 @@ graph TD
 - Maintaining a stable, consistent identifier across all models means downstream analyses, dashboards, and reports are trustworthy and actionable, helping the business make informed decisions.
 
 ### Currency Handling
-> All financial metrics were standardized to USD by dividing minor units (`inminor`) by 100 to ensure consistency in ROAS calculations and deposit aggregations.
+> All financial metrics were standardized to USD, matching the `purchase_amount_usd` convention used in the source tables,  by dividing minor units (`inminor`) by 100 to ensure consistency in ROAS calculations and deposit aggregations.
 
 ### Attribution
 - Defined **First Marketing Interaction** as the earliest `event_timestamp` per user from `web_events`.
@@ -149,7 +149,7 @@ Custom data tests enforce business-critical rules, ensuring that the Governance 
 
 ## 6. Project Evolution: Customer LTV
 
-- As part of evolving this analytics project, if the VIP team requested a way to identify high-value players for targeted promotions, the plan would be to incorporate a Customer Lifetime Value (LTV) score into our `dim_customer model`.
+- As part of evolving this analytics project, if the VIP team requested a way to identify high-value players for targeted promotions and the plan would be to incorporate a Customer Lifetime Value (LTV) score into our `dim_customer model`.
 
 - Discovery: I would start by meeting with the VIP team to define the LTV calculation. For example, we might define LTV as total revenue from deposits and ticket purchases minus marketing costs or other acquisition expenses. The goal would be to make the score actionable for marketing campaigns and player retention strategies.
 
