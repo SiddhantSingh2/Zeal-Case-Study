@@ -71,9 +71,9 @@ graph TD
     D --> J
     E --> L
     F --> G
-    G --> H
     G --> I
     G --> J
+    G --> H
     H --> L
     I --> K
     J --> K
