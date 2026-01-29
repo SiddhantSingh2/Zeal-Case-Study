@@ -149,14 +149,14 @@ Custom data tests enforce business-critical rules, ensuring that the Governance 
 
 ## 6. Project Evolution: Customer LTV
 
-- As part of evolving this analytics project, the VIP team requested a way to identify high-value players for targeted promotions. To address this, we plan to incorporate a Customer Lifetime Value (LTV) score into our `dim_customer model`.
+- As part of evolving this analytics project, if the VIP team requested a way to identify high-value players for targeted promotions, the plan would be to incorporate a Customer Lifetime Value (LTV) score into our `dim_customer model`.
 
-- Discovery: I would start by meeting with the VIP team to define the LTV calculation. For example, we might define LTV as total revenue from deposits and ticket purchases minus marketing costs or other acquisition expenses. The goal is to make the score actionable for marketing campaigns and player retention strategies.
+- Discovery: I would start by meeting with the VIP team to define the LTV calculation. For example, we might define LTV as total revenue from deposits and ticket purchases minus marketing costs or other acquisition expenses. The goal would be to make the score actionable for marketing campaigns and player retention strategies.
 
 - Development: Next, I would build an intermediate model, `int_user_ltv`, that aggregates each user’s historical deposits and purchases over time. This model would also incorporate any cost data needed to compute net LTV. Aggregating at the user level ensures we have a clean and single source of truth for each customer.
 
-- Integration: Once the intermediate LTV model is validated, I would join it into `dim_customer` as a new column, `customer_ltv`. This allows all existing analytics and reporting to automatically include the LTV metric, enabling segmentation, cohort analysis, and campaign targeting.
+- Integration: Once the intermediate LTV model is validated, I would join it into `dim_customer` as a new column, `customer_ltv`. This would allow all existing analytics and reporting to automatically include the LTV metric, enabling segmentation, cohort analysis, and campaign targeting.
 
-- Validation: To ensure correctness, I would add custom tests such as `customer_ltv >= 0` and cross-check aggregates against historical revenue and deposits. This ensures that the LTV scores are accurate and consistent with other data in the warehouse.
+- Validation: To ensure correctness, I would add custom tests such as `customer_ltv >= 0` and cross-check aggregates against historical revenue and deposits. This would ensure that the LTV scores are accurate and consistent with other data in the warehouse.
 
 - Deployment: Finally, the workflow would be deployed via the CI/CD pipeline with a peer review, including schema updates, documentation, and tests. Once live, marketing analysts and data consumers can use the LTV metric confidently to drive business decisions and targeted campaigns.
