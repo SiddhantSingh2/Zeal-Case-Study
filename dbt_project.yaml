@@ -1,0 +1,12 @@
+name: zeal_case_study
+version: 1.0
+config-version: 2
+
+models:
+  zeal_case_study:
+    staging:
+      materialized: view
+    intermediate:
+      materialized: table
+    marts:
+      materialized: incremental

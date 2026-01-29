@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: Customer dimension table with signup, marketing, deposit, and purchase metrics.
+    # Enforced data contract ensures downstream users can trust schema and metrics
+    config:
+      contract:
+        enforced: true
+    
+    columns:
+      - name: user_id
+        data_type: integer
+        description: Unique identifier for the customer
+        # This ID must always exist and be unique for correct attribution
+        tests:
+          - not_null
+          - unique
+
+      - name: signup_timestamp
+        data_type: timestamp
+        description: User signup timestamp
+        # Used to calculate time to first purchase and for cohort analysis
+
+      - name: first_marketing_interaction
+        data_type: timestamp
+        description: Timestamp of first marketing touchpoint
+        # Supports first-touch attribution for ROAS and channel effectiveness
+
+      - name: first_deposit_timestamp
+        data_type: timestamp
+        description: Timestamp of first deposit
+        # Used in ROAS calculations and to validate deposit occurs after marketing interaction
+
+      - name: first_ticket_purchase_timestamp
+        data_type: timestamp
+        description: Timestamp of first ticket purchase
+        # Validated to occur after signup; key metric for conversion timing
+
+      - name: days_to_first_purchase
+        data_type: integer
+        description: Days between first marketing interaction and first ticket purchase
+        # Derived metric for user journey analysis
+
+      - name: total_deposit_amount
+        data_type: numeric
+        description: Total deposit amount for this user
+        # Aggregated from deposits; supports ROAS and customer value calculations
+
+      - name: played_high_jackpot
+        data_type: boolean
+        description: Flag if user has purchased tickets for high-jackpot games
+        # Supports analysis of marketing channel effectiveness in acquiring high-value players

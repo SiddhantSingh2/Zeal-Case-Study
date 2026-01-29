@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_signups
+    description: Cleaned staging table for signups
+    columns:
+      - name: user_id
+        description: Unique user ID
+        tests:
+          - not_null
+          - unique
+      - name: signup_timestamp
+        description: Timestamp of signup
+
+  - name: stg_deposits
+    description: Cleaned staging table for deposits
+    columns:
+      - name: deposit_id
+        description: Unique deposit ID
+        tests:
+          - not_null
+      - name: deposit_amount_usd
+        description: Deposit amount converted to USD
+
+  - name: stg_ticket_purchases
+    description: Cleaned staging table for ticket purchases
+    columns:
+      - name: purchase_id
+        description: Unique purchase ID
+        tests:
+          - not_null
+      - name: purchase_amount_usd
+        description: Purchase amount in USD
+
+  - name: stg_games
+    description: Cleaned staging table for lottery games
+    columns:
+      - name: game_id
+        description: Unique game ID
+        tests:
+          - not_null
+      - name: jackpot_estimate_usd
+        description: Jackpot estimate in USD
+
+  - name: stg_funnel_spend
+    description: Cleaned staging table for marketing spend
+    columns:
+      - name: spend_usd
+        description: Marketing spend in USD
+
+  - name: stg_web_events
+    description: Cleaned staging table for web events
+    columns:
+      - name: event_id
+        description: Unique event ID
+        tests:
+          - not_null
