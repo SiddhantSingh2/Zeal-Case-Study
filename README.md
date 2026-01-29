@@ -39,9 +39,7 @@ This project is explicitly designed to answer the following case study business 
 
 ---
 
-## 3. Data Architecture (The “How”)
-
-### DAG (Textual / Mermaid Representation)
+## 3. Data Architecture & DAG
 
 ```mermaid
 graph TD
@@ -82,7 +80,7 @@ graph TD
     K --> L
     J --> M
     D --> M
-
+```
 ---
 
 ## Layering Strategy
